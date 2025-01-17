@@ -77,7 +77,7 @@ namespace TheOtherRoles.Patches
                     // 梯子追加
                     GameObject ladder = meetingRoom.GetComponentsInChildren<SpriteRenderer>().Where(x => x.name == "ladder_meeting").FirstOrDefault().gameObject;
                     GameObject newLadder = GameObject.Instantiate(ladder, ladder.transform.parent);
-                    UnhollowerBaseLib.Il2CppArrayBase<Ladder> ladders = newLadder.GetComponentsInChildren<Ladder>();
+                    Il2CppArrayBase<Ladder> ladders = newLadder.GetComponentsInChildren<Ladder>();
                     int id = 100;
                     foreach (var l in ladders)
                     {
@@ -177,10 +177,10 @@ namespace TheOtherRoles.Patches
                 console.checkWalls = true;
                 console.usableDistance = 0.7f;
                 console.TaskTypes = new TaskTypes[0];
-                console.ValidTasks = new UnhollowerBaseLib.Il2CppReferenceArray<TaskSet>(0);
+                console.ValidTasks = new Il2CppReferenceArray<TaskSet>(0);
                 var list = ShipStatus.Instance.AllConsoles.ToList();
                 list.Add(console);
-                ShipStatus.Instance.AllConsoles = new UnhollowerBaseLib.Il2CppReferenceArray<Console>(list.ToArray());
+                ShipStatus.Instance.AllConsoles = new Il2CppReferenceArray<Console>(list.ToArray());
             }
             if (console.Image == null)
             {

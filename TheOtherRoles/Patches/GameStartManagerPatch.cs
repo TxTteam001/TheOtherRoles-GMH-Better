@@ -4,7 +4,6 @@ using System.Reflection;
 using HarmonyLib;
 using Hazel;
 using InnerNet;
-using UnhollowerBaseLib;
 using UnityEngine;
 
 namespace TheOtherRoles.Patches

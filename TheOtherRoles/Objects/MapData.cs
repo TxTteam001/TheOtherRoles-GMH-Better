@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using UnhollowerBaseLib.Attributes;
 
 namespace TheOtherRoles.Objects
 {

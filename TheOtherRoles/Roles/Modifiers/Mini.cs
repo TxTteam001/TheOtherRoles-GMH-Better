@@ -42,8 +42,6 @@ namespace TheOtherRoles
 
         public float growingProgress()
         {
-            if (timeOfGrowthStart == null) return 0f;
-
             float timeSinceStart = (float)(DateTime.UtcNow - timeOfGrowthStart).TotalMilliseconds;
             return Mathf.Clamp(timeSinceStart / (growingUpDuration * 1000), 0f, 1f);
         }

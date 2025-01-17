@@ -161,7 +161,7 @@ namespace TheOtherRoles
                             MapUtilities.CachedShipStatus.RpcRepairSystem(SystemTypes.Reactor, 0 | 16);
                             MapUtilities.CachedShipStatus.RpcRepairSystem(SystemTypes.Reactor, 1 | 16);
                         }
-                        else if (SubmergedCompatibility.isSubmerged() && task.TaskType == SubmergedCompatibility.RetrieveOxygenMask)
+                        else if (SubmergedCompatibility.IsSubmerged && task.TaskType == SubmergedCompatibility.RetrieveOxygenMask)
                         {
                             MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(CachedPlayer.LocalPlayer.PlayerControl.NetId, (byte)CustomRPC.EngineerFixSubmergedOxygen, Hazel.SendOption.Reliable, -1);
                             AmongUsClient.Instance.FinishRpcImmediately(writer);
@@ -174,7 +174,7 @@ namespace TheOtherRoles
                 {
                     bool sabotageActive = false;
                     foreach (PlayerTask task in CachedPlayer.LocalPlayer.PlayerControl.myTasks)
-                        if (task.TaskType == TaskTypes.FixLights || task.TaskType == TaskTypes.RestoreOxy || task.TaskType == TaskTypes.ResetReactor || task.TaskType == TaskTypes.ResetSeismic || task.TaskType == TaskTypes.FixComms || task.TaskType == TaskTypes.StopCharles || (SubmergedCompatibility.isSubmerged() && task.TaskType == SubmergedCompatibility.RetrieveOxygenMask))
+                        if (task.TaskType == TaskTypes.FixLights || task.TaskType == TaskTypes.RestoreOxy || task.TaskType == TaskTypes.ResetReactor || task.TaskType == TaskTypes.ResetSeismic || task.TaskType == TaskTypes.FixComms || task.TaskType == TaskTypes.StopCharles || (SubmergedCompatibility.IsSubmerged && task.TaskType == SubmergedCompatibility.RetrieveOxygenMask))
                             sabotageActive = true;
                     return sabotageActive && Engineer.remainingFixes > 0 && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
@@ -1029,7 +1029,7 @@ namespace TheOtherRoles
                         SecurityGuard.ventTarget = null;
 
                     }
-                    else if (PlayerControl.GameOptions.MapId != 1 && MapOptions.couldUseCameras && !SubmergedCompatibility.isSubmerged())
+                    else if (PlayerControl.GameOptions.MapId != 1 && MapOptions.couldUseCameras && !SubmergedCompatibility.IsSubmerged)
                     { // Place camera if there's no vent and it's not MiraHQ
                         var pos = CachedPlayer.LocalPlayer.PlayerControl.transform.position;
                         byte[] buff = new byte[sizeof(float) * 2];
@@ -1057,7 +1057,7 @@ namespace TheOtherRoles
                 () => { return SecurityGuard.securityGuard != null && SecurityGuard.securityGuard == CachedPlayer.LocalPlayer.PlayerControl && CachedPlayer.LocalPlayer.PlayerControl.isAlive() && SecurityGuard.remainingScrews >= Mathf.Min(SecurityGuard.ventPrice, SecurityGuard.camPrice); },
                 () =>
                 {
-                    if (SecurityGuard.ventTarget == null && PlayerControl.GameOptions.MapId != 1 && SubmergedCompatibility.isSubmerged())
+                    if (SecurityGuard.ventTarget == null && PlayerControl.GameOptions.MapId != 1 && SubmergedCompatibility.IsSubmerged)
                     {
                         securityGuardButton.buttonText = ModTranslation.getString("PlaceCameraText");
                         securityGuardButton.Sprite = SecurityGuard.getPlaceCameraButtonSprite();
@@ -1074,7 +1074,7 @@ namespace TheOtherRoles
                         return SecurityGuard.remainingScrews >= SecurityGuard.ventPrice && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                     }
 
-                    return PlayerControl.GameOptions.MapId != 1 && SubmergedCompatibility.isSubmerged() && MapOptions.couldUseCameras && SecurityGuard.remainingScrews >= SecurityGuard.camPrice && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
+                    return PlayerControl.GameOptions.MapId != 1 && SubmergedCompatibility.IsSubmerged && MapOptions.couldUseCameras && SecurityGuard.remainingScrews >= SecurityGuard.camPrice && CachedPlayer.LocalPlayer.PlayerControl.CanMove;
                 },
                 () => { securityGuardButton.Timer = securityGuardButton.MaxTimer; },
                 SecurityGuard.getPlaceCameraButtonSprite(),
@@ -1129,7 +1129,7 @@ namespace TheOtherRoles
                     if (SecurityGuard.cantMove) CachedPlayer.LocalPlayer.PlayerControl.moveable = false;
                     CachedPlayer.LocalPlayer.PlayerControl.NetTransform.Halt(); // Stop current movement
                 },
-                () => { return SecurityGuard.securityGuard != null && SecurityGuard.securityGuard == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.PlayerControl.Data.IsDead && SecurityGuard.remainingScrews < Mathf.Min(SecurityGuard.ventPrice, SecurityGuard.camPrice) && SubmergedCompatibility.isSubmerged(); },
+                () => { return SecurityGuard.securityGuard != null && SecurityGuard.securityGuard == CachedPlayer.LocalPlayer.PlayerControl && !CachedPlayer.LocalPlayer.PlayerControl.Data.IsDead && SecurityGuard.remainingScrews < Mathf.Min(SecurityGuard.ventPrice, SecurityGuard.camPrice) && SubmergedCompatibility.IsSubmerged; },
                 () =>
                 {
                     if (securityGuardChargesText != null)
@@ -1563,7 +1563,7 @@ namespace TheOtherRoles
                             writer2.Write(Assassin.assassinMarked.PlayerId);
                             writer2.Write(byte.MaxValue);
                             AmongUsClient.Instance.FinishRpcImmediately(writer2);
-                            if (SubmergedCompatibility.isSubmerged())
+                            if (SubmergedCompatibility.IsSubmerged)
                             {
                                 SubmergedCompatibility.ChangeFloor(Assassin.assassinMarked.transform.localPosition.y > -7);
                             }

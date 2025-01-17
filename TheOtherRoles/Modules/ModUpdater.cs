@@ -145,7 +145,7 @@ namespace TheOtherRoles.Modules
             {
                 if (updateURI != null)
                 {
-                    updateTask = downloadUpdate();
+                    //updateTask = downloadUpdate();
                 }
                 else
                 {
@@ -237,7 +237,7 @@ namespace TheOtherRoles.Modules
             return false;
         }
 
-        public static async Task<bool> downloadUpdate()
+        /*public static async Task<bool> downloadUpdate()
         {
             try
             {
@@ -273,7 +273,7 @@ namespace TheOtherRoles.Modules
             }
             showPopup(ModTranslation.getString("updateFailed"));
             return false;
-        }
+        }*/
         private static void showPopup(string message)
         {
             setPopupText(message);

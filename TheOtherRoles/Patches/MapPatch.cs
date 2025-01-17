@@ -17,7 +17,7 @@ namespace TheOtherRoles.Patches
         public static Sprite corpseSprite;
         public static Sprite doorClosedSprite;
         public static Dictionary<String, SpriteRenderer> doorMarks;
-        public static UnhollowerBaseLib.Il2CppArrayBase<PlainDoor> plainDoors;
+        public static Il2CppArrayBase<PlainDoor> plainDoors;
         private static Vector3 useButtonPos;
 
         public static SpriteRenderer targetHerePoint;
@@ -116,7 +116,7 @@ namespace TheOtherRoles.Patches
             static bool Prefix(MapBehaviour __instance)
             {
                 if (!MeetingHud.Instance) return true;  // Only run in meetings, and then set the Position of the HerePoint to the Position before the Meeting!
-                Vector3 vector = AntiTeleport.position != null ? AntiTeleport.position : CachedPlayer.LocalPlayer.PlayerControl.transform.position;
+                Vector3 vector = AntiTeleport.position;
                 vector /= MapUtilities.CachedShipStatus.MapScale;
                 vector.x *= Mathf.Sign(MapUtilities.CachedShipStatus.transform.localScale.x);
                 vector.z = -1f;
@@ -351,8 +351,8 @@ namespace TheOtherRoles.Patches
             if (PlayerControl.GameOptions.MapId == 4)
             {
                 // サボタージュアイコンのレイアウトを変更
-                Vector3 halfScale = new Vector3(0.75f, 0.75f, 0.75f);
-                Vector3 originalScale = new Vector3(1f, 1f, 1f);
+                Vector3 halfScale = new(0.75f, 0.75f, 0.75f);
+                Vector3 originalScale = new(1f, 1f, 1f);
                 Vector3 scale = TheOtherRolesPlugin.BetterSabotageMap.Value ? halfScale : originalScale;
                 Transform comms = __instance.infectedOverlay.transform.FindChild("Comms");
                 Transform electrical = __instance.infectedOverlay.transform.FindChild("Electrical");
@@ -417,7 +417,7 @@ namespace TheOtherRoles.Patches
                 targetHerePoint.gameObject.SetActive(EvilTracker.target.isAlive());
                 GameData.PlayerInfo playerById = GameData.Instance.GetPlayerById(EvilTracker.target.PlayerId);
                 PlayerMaterial.SetColors((playerById != null) ? playerById.DefaultOutfit.ColorId : 0, targetHerePoint);
-                Vector3 pos = new Vector3(EvilTracker.target.transform.position.x, EvilTracker.target.transform.position.y, EvilTracker.target.transform.position.z);
+                Vector3 pos = new(EvilTracker.target.transform.position.x, EvilTracker.target.transform.position.y, EvilTracker.target.transform.position.z);
                 pos /= MapUtilities.CachedShipStatus.MapScale;
                 pos.x *= Mathf.Sign(MapUtilities.CachedShipStatus.transform.localScale.x);
                 pos.z = -10;
@@ -437,7 +437,7 @@ namespace TheOtherRoles.Patches
                     impostorHerePoint[p.PlayerId].gameObject.SetActive(p.isAlive());
                     GameData.PlayerInfo playerById = GameData.Instance.GetPlayerById(p.PlayerId);
                     PlayerMaterial.SetColors(0, impostorHerePoint[p.PlayerId]);
-                    Vector3 pos = new Vector3(p.transform.position.x, p.transform.position.y, p.transform.position.z);
+                    Vector3 pos = new(p.transform.position.x, p.transform.position.y, p.transform.position.z);
                     pos /= MapUtilities.CachedShipStatus.MapScale;
                     pos.x *= Mathf.Sign(MapUtilities.CachedShipStatus.transform.localScale.x);
                     pos.z = -10;

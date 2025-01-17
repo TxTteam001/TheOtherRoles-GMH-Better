@@ -334,7 +334,7 @@ namespace TheOtherRoles
         /// A single-precision floating point number greater than or equal to 0.0,
         /// and less than 1.0.
         /// </returns>
-        public Single NextSingle()
+        public override Single NextSingle()
         {
             return (Single)NextDouble();
         }

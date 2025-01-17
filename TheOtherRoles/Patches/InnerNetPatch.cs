@@ -1,6 +1,5 @@
 using HarmonyLib;
 using Hazel.Udp;
-using UnhollowerBaseLib;
 namespace TheOtherRoles.Patches
 {
     [HarmonyPatch(typeof(UnityUdpClientConnection), nameof(UnityUdpClientConnection.ConnectAsync))]

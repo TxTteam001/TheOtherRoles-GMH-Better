@@ -9,7 +9,6 @@ using HarmonyLib;
 using Hazel;
 using TheOtherRoles.Modules;
 using TheOtherRoles.Patches;
-using UnhollowerBaseLib;
 using UnityEngine;
 using static TheOtherRoles.GameHistory;
 using static TheOtherRoles.TheOtherRoles;
@@ -808,7 +807,7 @@ namespace TheOtherRoles
             foreach (char c in t) bc += Encoding.GetEncoding("UTF-8").GetByteCount(c.ToString()) == 1 ? 1 : 2;
             return t?.PadRight(num - (bc - t.Length));
         }
-        public static List<T> ToList<T>(this UnhollowerBaseLib.Il2CppArrayBase<T> array)
+        public static List<T> ToList<T>(this Il2CppArrayBase<T> array)
         {
             List<T> list = new();
             foreach (var item in array)
@@ -839,7 +838,7 @@ namespace TheOtherRoles
         public static PlainShipRoom getPlainShipRoom(PlayerControl p)
         {
             PlainShipRoom[] array = null;
-            UnhollowerBaseLib.Il2CppReferenceArray<Collider2D> buffer = new Collider2D[10];
+            Il2CppReferenceArray<Collider2D> buffer = new Collider2D[10];
             ContactFilter2D filter = default(ContactFilter2D);
             filter.layerMask = Constants.PlayersOnlyMask;
             filter.useLayerMask = true;

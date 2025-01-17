@@ -151,7 +151,7 @@ namespace TheOtherRoles.Patches
                 }
 
                 // Submerged Compatability if needed:
-                if (SubmergedCompatibility.isSubmerged())
+                if (SubmergedCompatibility.IsSubmerged)
                 {
                     // as submerged does, only change stuff for vents 9 and 14 of submerged. Code partially provided by AlexejheroYTB
                     if (SubmergedCompatibility.getInTransition())

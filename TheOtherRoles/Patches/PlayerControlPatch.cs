@@ -162,7 +162,7 @@ namespace TheOtherRoles.Patches
                     {
                         CachedPlayer.LocalPlayer.PlayerControl.transform.position = next.Item1;
                     }
-                    if (SubmergedCompatibility.isSubmerged())
+                    if (SubmergedCompatibility.IsSubmerged)
                     {
                         SubmergedCompatibility.ChangeFloor(next.Item1.y > -7);
                     }
@@ -1484,7 +1484,7 @@ namespace TheOtherRoles.Patches
         public static void Prefix(PlayerControl source, bool canMove)
         {
             Color color = source.cosmetics.currentBodySprite.BodySprite.material.GetColor("_BodyColor");
-            if (color != null && Morphling.morphling != null && source.Data.PlayerId == Morphling.morphling.PlayerId)
+            if (Morphling.morphling != null && source.Data.PlayerId == Morphling.morphling.PlayerId)
             {
                 var index = Palette.PlayerColors.IndexOf(color);
                 if (index != -1) colorId = index;

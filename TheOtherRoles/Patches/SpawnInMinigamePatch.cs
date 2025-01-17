@@ -6,7 +6,6 @@ using Hazel;
 using PowerTools;
 using TheOtherRoles.Objects;
 using TMPro;
-using UnhollowerBaseLib;
 using UnityEngine;
 
 namespace TheOtherRoles.Patches

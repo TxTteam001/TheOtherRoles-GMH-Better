@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BepInEx.IL2CPP.Utils.Collections;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
 using HarmonyLib;
 using Hazel;
 using UnityEngine;
@@ -14,7 +14,6 @@ using BepInEx;
 using BepInEx.IL2CPP;
 using BepInEx.Core;
 using System.Reflection;
-using UnhollowerRuntimeLib;
 
 
 
@@ -166,7 +165,7 @@ namespace TheOtherRoles.Patches
             taskPanel.transform.position = new Vector3(pos.x, pos.y, -20);
 
             // ダミー人形をスポーンさせておく
-            if (CachedPlayer.LocalPlayer.PlayerControl.isRole(RoleType.Puppeteer) && SubmergedCompatibility.isSubmerged())
+            if (CachedPlayer.LocalPlayer.PlayerControl.isRole(RoleType.Puppeteer) && SubmergedCompatibility.IsSubmerged)
             {
                 var playerId = (byte)GameData.Instance.GetAvailableId();
                 MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(CachedPlayer.LocalPlayer.PlayerControl.NetId, (byte)CustomRPC.SpawnDummy, Hazel.SendOption.Reliable, -1);

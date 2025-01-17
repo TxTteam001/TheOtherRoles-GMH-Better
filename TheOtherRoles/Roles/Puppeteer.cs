@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using BepInEx.IL2CPP.Utils.Collections;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
 using HarmonyLib;
 using Hazel;
 using TheOtherRoles.Objects;
@@ -670,7 +670,7 @@ namespace TheOtherRoles
                         {
                             doors = FastDestroyableSingleton<MiraShipStatus>.Instance.GetComponentsInChildren<PlainDoor>();
                         }
-                        else if (SubmergedCompatibility.isSubmerged())
+                        else if (SubmergedCompatibility.IsSubmerged)
                         {
                             // 遅いかも
                             doors = UnityEngine.GameObject.FindObjectsOfType<PlainDoor>();
@@ -698,7 +698,7 @@ namespace TheOtherRoles
                                 bool flag = true;
                                 if (PlayerControl.GameOptions.MapId == 2)
                                     flag = t.name.Contains("Inner");
-                                else if (SubmergedCompatibility.isSubmerged())
+                                else if (SubmergedCompatibility.IsSubmerged)
                                     flag = t.name.Contains("Upper");
                                 var consoles = t.GetComponentsInChildren<DeconControl>();
                                 DeconControl inner = null;
@@ -782,7 +782,7 @@ namespace TheOtherRoles
                         }
 
                         // エレベーター(サブマージド)
-                        if (SubmergedCompatibility.isSubmerged())
+                        if (SubmergedCompatibility.IsSubmerged)
                         {
                             var elevators = Helpers.FindObjectsOfType(SubmarineElevatorType);
                             object elevator = null;

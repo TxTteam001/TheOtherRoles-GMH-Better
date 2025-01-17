@@ -1,17 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+global using Il2CppInterop.Runtime;
+global using Il2CppInterop.Runtime.Attributes;
+global using Il2CppInterop.Runtime.InteropTypes;
+global using Il2CppInterop.Runtime.InteropTypes.Arrays;
+global using Il2CppInterop.Runtime.Injection;
+
 using BepInEx;
 using BepInEx.Configuration;
-using BepInEx.IL2CPP;
+using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 using Hazel;
+using System.Collections.Generic;
+using System.Linq;
+using System;
+using UnityEngine;
 using TheOtherRoles.Modules;
+using Il2CppSystem.Security.Cryptography;
+using Il2CppSystem.Text;
+using AmongUs.Data;
+using System.Reflection;
 using TheOtherRoles.Objects;
 using TheOtherRoles.Patches;
-using UnityEngine;
-using UnhollowerRuntimeLib;
 
 
 namespace TheOtherRoles
@@ -23,7 +31,7 @@ namespace TheOtherRoles
     {
         public const string Id = "me.eisbison.theotherroles";
 
-        public const string VersionString = "999.999.999";
+        public const string VersionString = "2.3.133";
 
         public static System.Version Version = System.Version.Parse(VersionString);
         internal static BepInEx.Logging.ManualLogSource Logger;

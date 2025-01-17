@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using HarmonyLib;
-using UnhollowerBaseLib;
 using UnityEngine;
 #if Steam
 using AmongUs.Data;

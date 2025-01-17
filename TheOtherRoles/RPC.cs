@@ -858,8 +858,8 @@ namespace TheOtherRoles
                 animator?.Stop();
                 vent.EnterVentAnim = vent.ExitVentAnim = null;
                 vent.myRend.sprite = animator == null ? SecurityGuard.getStaticVentSealedSprite() : SecurityGuard.getAnimatedVentSealedSprite();
-                if (SubmergedCompatibility.isSubmerged() && vent.Id == 0) vent.myRend.sprite = SecurityGuard.getSubmergedCentralUpperSealedSprite();
-                if (SubmergedCompatibility.isSubmerged() && vent.Id == 14) vent.myRend.sprite = SecurityGuard.getSubmergedCentralLowerSealedSprite();
+                if (SubmergedCompatibility.IsSubmerged && vent.Id == 0) vent.myRend.sprite = SecurityGuard.getSubmergedCentralUpperSealedSprite();
+                if (SubmergedCompatibility.IsSubmerged && vent.Id == 14) vent.myRend.sprite = SecurityGuard.getSubmergedCentralLowerSealedSprite();
                 vent.myRend.color = new Color(1f, 1f, 1f, 0.5f);
                 vent.name = "FutureSealedVent_" + vent.name;
             }
@@ -1378,7 +1378,7 @@ namespace TheOtherRoles
         {
             if (Puppeteer.dummy == null) return;
             var dummy = Puppeteer.dummy;
-            if (SubmergedCompatibility.isSubmerged() && spawn)
+            if (SubmergedCompatibility.IsSubmerged && spawn)
             {
                 bool toUpper = pos.y > -7;
                 SubmergedPatch.ChangePlayerFloorState(dummy.PlayerId, toUpper);

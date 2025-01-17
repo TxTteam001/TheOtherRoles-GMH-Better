@@ -91,7 +91,7 @@ namespace TheOtherRoles.Objects
             var taskList = new TaskTypes[0].ToList();
             taskList.Add(TaskTypes.None);
             console.TaskTypes = taskList.ToArray();
-            console.ValidTasks = new UnhollowerBaseLib.Il2CppReferenceArray<TaskSet>(0);
+            console.ValidTasks = new Il2CppReferenceArray<TaskSet>(0);
             console.Image = shrine.AddComponent<SpriteRenderer>();
             console.Image.sprite = sprite;
             console.Image.material = new Material(ShipStatus.Instance.AllConsoles[0].Image.material);
@@ -109,7 +109,7 @@ namespace TheOtherRoles.Objects
             button.OnClick.AddListener((UnityEngine.Events.UnityAction)Use);
             var consoleList = ShipStatus.Instance.AllConsoles.ToList();
             consoleList.Add(console);
-            ShipStatus.Instance.AllConsoles = new UnhollowerBaseLib.Il2CppReferenceArray<Console>(consoleList.ToArray());
+            ShipStatus.Instance.AllConsoles = new Il2CppReferenceArray<Console>(consoleList.ToArray());
             allShrine.Add(this);
             counter += 1;
         }

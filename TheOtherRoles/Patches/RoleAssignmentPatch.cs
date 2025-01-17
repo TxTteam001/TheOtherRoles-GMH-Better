@@ -7,7 +7,7 @@ using HarmonyLib;
 using Hazel;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using BepInEx.IL2CPP.Utils.Collections;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
 using static TheOtherRoles.TheOtherRoles;
 
 namespace TheOtherRoles.Patches

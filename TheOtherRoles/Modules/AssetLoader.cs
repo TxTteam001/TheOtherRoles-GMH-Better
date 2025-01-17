@@ -3,7 +3,6 @@ using System.Reflection;
 using TheOtherRoles.Objects;
 using UnityEngine;
 using UnityEngine.UI;
-using Il2CppType = UnhollowerRuntimeLib.Il2CppType;
 
 namespace TheOtherRoles.Modules
 {

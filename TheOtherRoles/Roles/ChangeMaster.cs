@@ -9,7 +9,7 @@ using TheOtherRoles.Objects;
 using static TheOtherRoles.TheOtherRoles;
 using static TheOtherRoles.Patches.PlayerControlFixedUpdatePatch;
 using UnityEngine;
-using BepInEx.IL2CPP.Utils.Collections;
+using BepInEx.Unity.IL2CPP.Utils.Collections;
 using UnhollowerBaseLib;
 
 namespace TheOtherRoles

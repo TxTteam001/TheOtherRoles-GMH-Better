@@ -4,7 +4,6 @@ using System.Linq;
 using HarmonyLib;
 using Hazel;
 using TheOtherRoles.Objects;
-using UnhollowerBaseLib;
 using UnityEngine;
 using static TheOtherRoles.TheOtherRoles;
 using static TheOtherRoles.TheOtherRolesGM;
@@ -121,8 +120,8 @@ namespace TheOtherRoles.Patches
                 animator?.Stop();
                 vent.EnterVentAnim = vent.ExitVentAnim = null;
                 vent.myRend.sprite = animator == null ? SecurityGuard.getStaticVentSealedSprite() : SecurityGuard.getAnimatedVentSealedSprite();
-                if (SubmergedCompatibility.isSubmerged() && vent.Id == 0) vent.myRend.sprite = SecurityGuard.getSubmergedCentralUpperSealedSprite();
-                if (SubmergedCompatibility.isSubmerged() && vent.Id == 14) vent.myRend.sprite = SecurityGuard.getSubmergedCentralLowerSealedSprite();
+                if (SubmergedCompatibility.IsSubmerged && vent.Id == 0) vent.myRend.sprite = SecurityGuard.getSubmergedCentralUpperSealedSprite();
+                if (SubmergedCompatibility.IsSubmerged && vent.Id == 14) vent.myRend.sprite = SecurityGuard.getSubmergedCentralLowerSealedSprite();
                 vent.myRend.color = Color.white;
                 vent.name = "SealedVent_" + vent.name;
             }
@@ -193,7 +192,7 @@ namespace TheOtherRoles.Patches
         [HarmonyPatch(typeof(UnityEngine.Object), nameof(UnityEngine.Object.Destroy), new Type[] { typeof(GameObject) })]
         public static void Prefix(GameObject obj)
         {
-            if (!SubmergedCompatibility.isSubmerged()) return;
+            if (!SubmergedCompatibility.IsSubmerged) return;
             if (obj != null && obj.name.Contains("ExileCutscene"))
             {
                 WrapUpPostfix(ExileControllerBeginPatch.lastExiled);
@@ -218,7 +217,7 @@ namespace TheOtherRoles.Patches
                 }
             }
 
-            if (SubmergedCompatibility.isSubmerged())
+            if (SubmergedCompatibility.IsSubmerged)
             {
                 var fullscreen = UnityEngine.GameObject.Find("FullScreen500(Clone)");
                 if (fullscreen) fullscreen.SetActive(false);
@@ -327,7 +326,7 @@ namespace TheOtherRoles.Patches
                 if (AntiTeleport.position != new Vector3())
                 {
                     CachedPlayer.LocalPlayer.PlayerControl.transform.position = AntiTeleport.position;
-                    if (SubmergedCompatibility.isSubmerged())
+                    if (SubmergedCompatibility.IsSubmerged)
                     {
                         SubmergedCompatibility.ChangeFloor(AntiTeleport.position.y > -7);
                     }
